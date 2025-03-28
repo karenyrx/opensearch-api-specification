@@ -547,7 +547,7 @@ components:
               required:
                 - source
     ScriptLanguage:
-      anyOf:
+      oneOf:
         - title: builtin
           $ref: '#/components/schemas/BuiltinScriptLanguage'
         - title: custom
