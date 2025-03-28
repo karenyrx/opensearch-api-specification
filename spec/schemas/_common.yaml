@@ -374,6 +374,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ShardFailure'
+        primary:
+          $ref: '#/components/schemas/uint'
       required:
         - failed
         - successful
@@ -882,7 +884,7 @@ components:
           desciption: all shard copies
         - type: 'null'
           description: null represents the default value (which defaults to one shard copy).
-        - type: integer
+        - $ref: '#/components/schemas/uint'
           description: A numeric value greater than or equal to 0
     InlineGetDictUserDefined:
       type: object
