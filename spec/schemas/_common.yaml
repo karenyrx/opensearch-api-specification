@@ -420,6 +420,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ErrorCause'
+        headers:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/StringOrStringArray'
       required:
         - type
       additionalProperties:
