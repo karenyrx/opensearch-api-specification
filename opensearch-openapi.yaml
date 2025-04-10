@@ -46123,8 +46123,8 @@ components:
         store:
           type: boolean
       required:
-        - index
         - id
+        - index
         - path
     _common.query_dsl___TermsQuery:
       allOf:
