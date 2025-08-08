@@ -771,7 +771,7 @@ components:
           $ref: '#/components/schemas/FieldLookup'
         shape:
           $ref: '#/components/schemas/GeoShape'
-        relation: 
+        relation:
           $ref: '_common.yaml#/components/schemas/GeoShapeRelation'
       required:
         - shape
@@ -1062,20 +1062,6 @@ components:
           properties:
             vector:
               $ref: '#/components/schemas/QueryVector'
-            k:
-              description: The total number of nearest neighbors to return as top hits.
-              type: integer
-              format: int32
-            min_score:
-              description: The minimum similarity score required in order for a neighbor to be considered a hit.
-              type: number
-              format: float
-              x-version-added: '2.14'
-            max_distance:
-              description: The maximum physical vector space distance required in order for a neighbor to be considered a hit.
-              type: number
-              format: float
-              x-version-added: '2.14'
             filter:
               description: The filter for the k-NN search query.
               $ref: '#/components/schemas/QueryContainer'
@@ -1091,6 +1077,33 @@ components:
               x-version-added: '2.19'
           required:
             - vector
+        - oneOf:
+            - type: object
+              properties:
+                k:
+                  description: The total number of nearest neighbors to return as top hits.
+                  type: integer
+                  format: int32
+              required:
+                - k
+            - type: object
+              properties:
+                max_distance:
+                  description: The maximum physical vector space distance required in order for a neighbor to be considered a hit.
+                  type: number
+                  format: float
+                  x-version-added: '2.14'
+              required:
+                - max_distance
+            - type: object
+              properties:
+                min_score:
+                  description: The minimum similarity score required in order for a neighbor to be considered a hit.
+                  type: number
+                  format: float
+                  x-version-added: '2.14'
+              required:
+                - min_score
     KnnQueryRescore:
       oneOf:
         - title: enable
@@ -2232,7 +2245,7 @@ components:
           $ref: '#/components/schemas/FieldLookup'
         shape:
           $ref: '#/components/schemas/XyShape'
-        relation: 
+        relation:
           $ref: '_common.yaml#/components/schemas/GeoShapeRelation'
       required:
         - shape

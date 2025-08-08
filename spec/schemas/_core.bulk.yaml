@@ -124,11 +124,23 @@ components:
         items:
           type: array
           items:
-            type: object
-            additionalProperties:
-              $ref: '#/components/schemas/ResponseItem'
-            minProperties: 1
-            maxProperties: 1
+            oneOf:
+              - type: object
+                properties:
+                  create:
+                    $ref: '#/components/schemas/ResponseItem'
+              - type: object
+                properties:
+                  index:
+                    $ref: '#/components/schemas/ResponseItem'
+              - type: object
+                properties:
+                  update:
+                    $ref: '#/components/schemas/ResponseItem'
+              - type: object
+                properties:
+                  delete:
+                    $ref: '#/components/schemas/ResponseItem'
         took:
           type: integer
           format: int64
